@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      .important .important { color: red; }
+      .tools .tools { color: red; }
+      .release .release { color: red; }
+      .ecma .ecma { color: red; }
+      .negative .negative { color: red; }
+      .positive .positive { color: red; }
+      .change .change { color: red; }
+      .future .recent { display: none; }
+      body {
+        font-size: 300%;
+        padding-top: 50px;
+      }
+      ul {
+        margin-left: 0;
+      }
+      li {
+        list-style-type: none;
+      }
+      .topic {
+        margin: 50px 30px;
+      }
+      .title {
+        font-weight: bold;
+      }
+      .date {
+        font-size: 80%;
+        padding-right: 20px;
+      }
+      .body {
+        margin-left: 100px;
+        font-size: 90%;
+      }
+      .slide {
+        width: 100%;
+        height: 80%;
+        background-image: url(roadmap.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      dl {
+        margin-left: 50px;
+      }
+      dt {
+        font-weight: bold;
+      }
+      dd {
+        margin-right: 50px;
+      }
+      select {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        border: 1px solid black;
+        font-size: 100%;
+      }
+    </style>
+    <script>
+      function $(id) {
+        return document.getElementById(id);
+      }
+      window.addEventListener('load', function() {
+        var select = $('select');
+        select.addEventListener('change', function() {
+          document.body.className = select.options[select.selectedIndex].value;
+          if (document.body.className === 'future') {
+            $('future').style.display = 'block';
+          }
+          else {
+            $('future').style.display = 'none';
+          }
+        });
+        $('future').style.display = 'none';
+      });
+    </script>
+  </head>
+  <body>
+    <select id="select">
+      <option value="none">-</option>
+      <option value="important">重要</option>
+      <option value="release">リリース</option>
+      <option value="ecma">ECMA</option>
+      <option value="tools">ツール</option>
+      <option value="positive">ポジティブ</option>
+      <option value="negative">ネガティブ</option>
+      <option value="change">方向転換</option>
+      <option value="future">未来</option>
+    </select>
+    <ul class="recent">
+      <li class="topic important">
+        <div class="title"><span class="date">2014-06-20</span>Google I/O 2014</div>
+      </li>
+      <li class="topic release">
+        <div class="title"><span class="date">2014-06-26</span>Dart1.5公開</div>
+        <div class="body">DartiumがAndroid上で動くようになる</div>
+      </li>
+      <li class="topic ecma important positive">
+        <div class="title"><span class="date">2014-07-04</span>EcmaがDart言語仕様を承認</div>
+        <div class="body">ECMA-408</div>
+      </li>
+      <li class="topic release">
+        <div class="title"><span class="date">2014-08-27</span>Dart1.6公開</div>
+        <div class="body">importしたライブラリの遅延ロードが追加される</div>
+      </li>
+      <li class="topic release">
+        <div class="title"><span class="date">2014-10-15</span>Dart 1.7公開</div>
+        <div class="body">Dart製コマンドラインアプリケーションのインストールが簡単になる</div>
+      </li>
+      <li class="topic important tools negative">
+        <div class="title"><span class="date">2014-10-22</span>Angular2.0がAtScript（TypeScript）ベースになることが発表</div>
+        <div class="body">AngularDartもAtScriptからの変換になる</div>
+      </li>
+      <li class="topic tools">
+        <div class="title"><span class="date">2014-11-07</span>Dart on AppEngine</div>
+        <div class="body">DartをGoogle Map Engine Managed VM上で簡単に試せるようにカスタムランタイムが公開される</div>
+      </li>
+      <li class="topic release">
+        <div class="title"><span class="date">2014-11-28</span>Dart1.8公開</div>
+        <div class="body">enumの実験的な実装が追加される</div>
+      </li>
+      <li class="topic ecma">
+        <div class="title"><span class="date">2014-12-15</span>ECMA408 2nd edition公開</div>
+        <div class="body">enumとasyncが追加</div>
+      </li>
+      <li class="topic">
+        <div class="title"><span class="date">2015-02-02</span>正規表現エンジン刷新</div>
+        <div class="body">V8のIrregexpエンジンをDart VMに移植し、これまでと比べて150倍高速化される</div>
+      </li>
+      <li class="topic tools">
+        <div class="title"><span class="date">2015-03-06</span>dartfmt公開</div>
+        <div class="body">ツールセットにgofmt的なフォーマッタが追加される</div>
+      </li>
+      <li class="topic important negative">
+        <div class="title"><span class="date change">2015-03-25</span>Dart VMをChromeに組み込まないと発表</div>
+        <div class="body">今後dart2jsが強化される</div>
+      </li>
+      <li class="topic release">
+        <div class="title"><span class="date change">2015-03-26</span>Dart 1.9公開</div>
+        <div class="body">
+          <ul>
+            <li>wait/async追加</li>
+            <li>enum追加</li>
+          </ul>
+        </div>
+      </li>
+      <li class="topic important tools negative positive">
+        <div class="title"><span class="date change">2015-04-30</span>Dart Editorの終了が発表</div>
+        <div class="body">いろんなエディタ用のプラグインを公開する方向に変更される</div>
+      </li>
+      <li class="topic tools">
+        <div class="title"><span class="date change">2015-05-06</span>DartPad1.0公開</div>
+        <div class="body">Dartのコードをブラウザ上で簡単に確認できるツールが公開される</div>
+      </li>
+      <li class="topic important positive">
+        <div class="title"><span class="date change">2015-06-03</span>DartのソースコードがGithubに移行</div>
+        <div class="body">https://github.com/dart-lang/sdk</div>
+      </li>
+      <li class="topic ecma">
+        <div class="title"><span class="date change">2015-06-17</span>ECMA-408 3rd edition公開</div>
+        <div class="body">
+          <ul>
+            <li>?.演算子</li>
+            <li>#でメソッドをクロージャー化</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div id="future">
+      <div class="slide"></div>
+      <dl>
+        <dt>Fletch</dt>
+        <dd>軽量なDartランタイム</dd>
+        <dt>Dart Dev Compiler</dt>
+        <dd>DartファイルとJSファイルが一対一対応し、その内容的にも対応が分かりやすい新Dartコンパイラ</dd>
+      </dl>
+    </div>
+  </body>
+</html>
+
